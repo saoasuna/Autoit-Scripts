@@ -1,0 +1,20 @@
+Local $i = 0
+While $i<40
+MouseClick ( "left" , 1315, 421)
+Sleep(1000)
+Send ("{Enter}")
+Sleep(1000)
+Send ("{Y}")
+Sleep(1000)
+Send ("{Enter}")
+Sleep(500)
+Sleep(1820000)
+MouseClick ( "left" , 1315, 421)
+Sleep(1000)
+Send ("{Enter}")
+Sleep(1000)
+Send ("{Enter}")
+Sleep(1000)
+Send ("{Enter}")
+Sleep(4000)
+WEnd
