@@ -125,14 +125,28 @@ while (previous[destination] != -5) {
 }
 optimalPath.push(source); // iterate from back to front to get the complete shortest path!
 
-cout << infinity << endl;
+
+ofstream myfile;
+myfile.open("path.txt");
+
+if (optimalPath.length() > 0) {
+
+	for (int i = optimalPath.length() - 1; i>= 0; i--) {
+	if (myfile.is_open()) {
+		myfile << optimalPath[i];
+	}
+}
+
+}
+
+else {
+	myfile << "0";
+}
 
 
 
-
-
-
-system("pause"); // for testing purposes
+//system("pause"); // for testing purposes
+return 0;
 
 }
 
@@ -143,9 +157,4 @@ system("pause"); // for testing purposes
 // (this c++ script should get the character to either left or right of the object: autoit script will handle
 // the minor left/right adjustments that need to be made if the desired coordinates does not align exactly
 // with a node)
-
-
-
-// if unexpected failure, reset position on map by going all the way to the bottom left of the map, and restarting
-
 
