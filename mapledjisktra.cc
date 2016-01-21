@@ -86,15 +86,21 @@ vector<int> distance(length);
 vector<int> previous(length); // this is the parent array for
 // previous node from the optimal path; need it in order to recall the actual shortest path
 
+
+// --- comments from 21.01.16
+// since this is a project with two years ago, i'm actually having a bit of trouble remembering what i was doing
+// this seems to be done with adjacency matrix and array, i might plan to replace it with adjacency lists and fibonacci heap
+// for now i'll just comment the parallel of what i'm doing in terms of the adjacency matrix method
+
 for (int i = 0; i<length; i++) {
-	distance[i] = infinity;
+	distance[i] = infinity;	// standard, set all distances to infinity
 }
 
 for (int i =0; i<length; i++) {
-	previous[length] = -5;
+	previous[length] = -5;	// the predecessor array(?)
 }
 
-distance[source] = 0;
+distance[source] = 0; // source set to 0
 
 for (int i =0; i<n; i++) {
 	int current = -1;
@@ -102,17 +108,17 @@ for (int i =0; i<n; i++) {
 		if (visited[j]) { 
 			continue;
 		}
-		if (current == -1 || distance[j] < distance[current]) {
+		if (current == -1 || distance[j] < distance[current]) { // this is similar to the idea of a min priority queue?
 			current = j;
 		}
 	}
 
 	visited[current] = true;
 	for(int j = 0; j<n; j++) {
-		int pathLength = distance[current] + adjMatrix[current][j];
+		int pathLength = distance[current] + adjMatrix[current][j]; // "relaxation" of the paths
 		if (pathLength < distance[j]) {
 			distance[j] = pathLength;
-			previous[j] = current;
+			previous[j] = current; // if j's shortest path was updated, then the current is the parent of vertex j
 		}
 	}
 }
@@ -120,7 +126,7 @@ for (int i =0; i<n; i++) {
 int shortestPath = distance[destination];
 vector<int> optimalPath;
 while (previous[destination] != -5) {
-	optimalPath.push(destination); // push onto stack
+	optimalPath.push(destination); // load vector
 	destination = previous[destination];
 }
 optimalPath.push(source); // iterate from back to front to get the complete shortest path!
