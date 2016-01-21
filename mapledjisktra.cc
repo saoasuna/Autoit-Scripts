@@ -99,8 +99,8 @@ distance[source] = 0;
 for (int i =0; i<n; i++) {
 	int current = -1;
 	for (int j = 0; j< n; j++) {
-		if (!(visited[j])){
-			break;
+		if (visited[j]) { 
+			continue;
 		}
 		if (current == -1 || distance[j] < distance[current]) {
 			current = j;
